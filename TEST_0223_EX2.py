@@ -1,17 +1,9 @@
 
 # by convention, we give classes PascalCase names
 class Set:
- # these are the member functions
- # every one takes a first parameter "self" (another convention)
- # that refers to the particular Set object being used
+
  def __init__(self, values=None):
-    """This is the constructor.
-    It gets called when you create a new Set.
-    You would use it like
-    s1 = Set() # empty set
-     s2 = Set([1,2,2,3]) # initialize with values"""
-    self.dict = {}  # each instance of Set has its own dict property
- # which is what we'll use to track memberships
+    self.dict = {}
     if values is not None:
          for value in values:
              self.add(value)
@@ -41,7 +33,8 @@ print("Str(Set):"+str(s))
 
 
 class Set1(Set):
-     def __init__(self, values=None):
+     def __repr__(self, values=None):
         return "My Data in Set: "+str(self.dict.keys())
-s2 = Set1([1,2,3,4])
+s2=Set1([1,2,3,4])
+
 print("Str(Set1):" + str(s2))

@@ -44,7 +44,6 @@ fig.plt.show()
 Class and Homework
 =========================
 
-
 機率
 
 ```python

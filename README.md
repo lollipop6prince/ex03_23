@@ -350,8 +350,8 @@ if __name__ == "__main__":
     #from __future__ import division
     #import math, random
     #第一題 假設檢定
-    #設定mu = 98 , sigma = 10
-    mu_0, sigma_0 = 98,10
+    #設定mu = 97 , sigma = 10
+    mu_0, sigma_0 = 97,10
     print "mu_0", mu_0
     print "sigma_0", sigma_0
 
@@ -389,12 +389,12 @@ if __name__ == "__main__":
         return inverse_normal_cdf(1 - probability, mu, sigma)
 
     #第一個問題
-    # a = 5% = 0.95機率
-    print "normal_lower_bound(0.95, mu_0, sigma_0)", normal_lower_bound(0.95, mu_0, sigma_0)
+    # a = 15% = 0.85機率
+    print "normal_lower_bound(0.95, mu_0, sigma_0)", normal_lower_bound(0.85, mu_0, sigma_0)
     print
 
     #第一題第二個問題
-    print "normal_lower_bound(0.9, mu_0, sigma_0) = ", normal_lower_bound(0.9, mu_0, sigma_0)
+    print "normal_lower_bound(0.9, mu_0, sigma_0) = ", normal_lower_bound(0.95, mu_0, sigma_0)
 
     #第一題第三個問題，求顯著性
     #normal_probability_below = normal_cdf

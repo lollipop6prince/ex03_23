@@ -42,7 +42,7 @@ fig.savefig(“output.png”)
 fig.plt.show()
 ```  
 Class and Homework
-=========================
+==========================
 
 機率
 

@@ -1,6 +1,10 @@
 張瑞珊 Homework and Class
 =========================
 
+
+Homework and Class 0330
+=========================
+
 用numpy做出常態分配(畫出常態分配的圖)。
 
 ```python
@@ -41,7 +45,7 @@ fig=sns.lmplot('x', 'y', data=df, fit_reg=False)
 fig.savefig(“output.png”)
 fig.plt.show()
 ```  
-Class and Homework
+Homework and Class 0406
 ==========================
 
 機率

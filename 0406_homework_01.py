@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 fig = plt.gcf()          #獲得當前圖表的instance
 fig.set_size_inches(8,5) #設定圖表的尺寸
 
+
 # 將 'x' 設為 sympy 可處理的變數
 var('x')
 # 將 x 正規化成lambda函數 f

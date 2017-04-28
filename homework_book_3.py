@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
-import requests , re , json
-from collections import Counter
+import requests
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -8,9 +7,6 @@ import numpy as np
 price_list = []
 
 def book_info(div):
-
- """given a BeautifulSoup <td> Tag representing a book,
- extract the book's details and return a dict"""
  author = div.find("div", "box_mid_billboard_pro").p.text
  title = div.find("h3").a.text
  price = div.find("span", "price").text
@@ -24,10 +20,9 @@ def book_info(div):
  }
 
 
-from time import sleep
 base_url = "http://www.eslite.com/newbook_list.aspx?cate=156&sub=159&page="
 books = []
-NUM_PAGES = 10 # at the time of writing, probably more by now
+NUM_PAGES = 10
 for page_num in range(1, NUM_PAGES + 1):
  url = base_url + str(page_num)
  soup = BeautifulSoup(requests.get(url).text, 'html5lib')

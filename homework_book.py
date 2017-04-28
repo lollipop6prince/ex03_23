@@ -8,16 +8,12 @@ def book_info(div):
  extract the book's details and return a dict"""
  author = div.find("div", "box_mid_billboard_pro").p.text
  title = div.find("h3").a.text
- #print(div.find('span','price_sale'))
- price = div.find('span','price_sale')
- # isbn_link = td.find("div", "thumbheader").a.get("href")
- # isbn = re.match("/product/(.*)\.do", isbn_link).groups()[0]
- # date = td.find("span", "directorydate").text.strip()
+ price = div.find("span","price").text
+
  return {
  "author" : author,
  "title" : title,
  "price" : price,
- # "date" : date
  }
 
 url = "http://www.eslite.com/newbook_list.aspx?cate=156&sub=159&page=1"
@@ -40,9 +36,9 @@ def is_video(td):
 from time import sleep
 base_url = "http://www.eslite.com/newbook_list.aspx?cate=156&sub=159&page="
 books = []
-NUM_PAGES = 1 # at the time of writing, probably more by now
+NUM_PAGES = 10 # at the time of writing, probably more by now
 for page_num in range(1, NUM_PAGES + 1):
- print "souping page", page_num, ",", len(books), " found so far"
+ # print "souping page", page_num, ",", len(books), " found so far"
  url = base_url + str(page_num)
  soup = BeautifulSoup(requests.get(url).text, 'html5lib')
  for div in soup('div', 'box_mid_billboard'):
@@ -54,26 +50,25 @@ for page_num in range(1, NUM_PAGES + 1):
 # sleep(2)
 
 print(books)
-
+price= []
 for b in books:
     print("title : " + b['title'])
     print("author : " + b['author'])
     print("price : " + b['price'])
 
-
-
-
-
 print(len(books))
 
+
+
+
 # def get_year(book):
-#  """book["date"] looks like 'November 2014' so we need to
-#  split on the space and then take the second piece"""
-#  return int(book["date"].split()[1])
+#     """book["date"] looks like 'November 2014' so we need to
+#     split on the space and then take the second piece"""
+#     return int(book["date"].split()[1])
 # # 2014 is the last complete year of data (when I ran this)
 # year_counts = Counter(get_year(book) for book in books
-#  if get_year(book) <= 2017)
-# import matplotlib.pyplot as plt
+#     if get_year(book) <= 2017)
+import matplotlib.pyplot as plt
 # years = sorted(year_counts)
 # book_counts = [year_counts[year] for year in years]
 # plt.plot(years, book_counts)
@@ -81,17 +76,6 @@ print(len(books))
 # plt.title("Data is Big!")
 # plt.show()
 
-#
-# serialized = """{ "title" : "Data Science Book",
-#  "author" : "Joel Grus",
-#  "publicationYear" : 2014,
-#  "topics" : [ "data", "science", "data science"] }"""
-# # parse the JSON to create a Python dict
-# deserialized = json.loads(serialized)
-# if "data science" in deserialized["topics"]:
-#  print deserialized
-#
-# endpoint = "https://api.github.com/users/joelgrus/repos"
-# repos = json.loads(requests.get(endpoint).text)
-# print(repos)
+
+
 

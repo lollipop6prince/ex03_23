@@ -675,3 +675,76 @@ if __name__ == "__main__":
 
 
 ```
+
+
+20170504 散佈圖
+
+```python
+xs = [random_normal() for _ in range(1000)]
+ys1 = [x - 2+ random_normal() / 2 for x in xs]
+ys2 = [-x + 2+ random_normal() / 2 for x in xs]
+
+
+def scatter():
+    plt.scatter(xs, ys1, marker='.', color='black', label='ys1')
+    plt.scatter(xs, ys2, marker='.', color='gray', label='ys2')
+    plt.xlabel('xs')
+    plt.ylabel('ys')
+    plt.legend(loc=9)
+    plt.show()
+
+```
+  
+多格之散佈圖
+
+```python
+def make_scatterplot_matrix():
+    # first, generate some random data
+
+    num_points = 100
+
+    def random_row():
+        row = [None, None, None, None, None, None]
+        row[0] = random_normal()
+        row[1] = -5 * row[0] + random_normal()
+        row[2] = row[0] + row[1] + 5 * random_normal()
+        row[3] = 6 if row[2] > -2 else 0
+        row[4] = 5 * row[0] + random_normal()
+        row[5] = 2
+        return row
+
+    random.seed(0)
+    data = [random_row()
+            for _ in range(num_points)]
+
+    # then plot it
+
+    _, num_columns = shape(data)
+    fig, ax = plt.subplots(num_columns, num_columns)
+
+    for i in range(num_columns):
+        for j in range(num_columns):
+
+            # scatter column_j on the x-axis vs column_i on the y-axis
+            if i != j:
+                ax[i][j].scatter(get_column(data, j), get_column(data, i))
+
+            # unless i == j, in which case show the series name
+            else:
+                ax[i][j].annotate("series " + str(i), (0.5, 0.5),
+                                  xycoords='axes fraction',
+                                  ha="center", va="center")
+
+            # then hide axis labels except left and bottom charts
+            if i < num_columns - 1: ax[i][j].xaxis.set_visible(False)
+            if j > 0: ax[i][j].yaxis.set_visible(False)
+
+    # fix the bottom right and top left axis labels, which are wrong because
+    # their charts only have text in them
+    ax[-1][-1].set_xlim(ax[0][-1].get_xlim())
+    ax[0][0].set_ylim(ax[0][1].get_ylim())
+
+    plt.show()
+```  
+
+

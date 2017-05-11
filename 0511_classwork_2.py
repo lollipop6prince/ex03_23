@@ -70,3 +70,6 @@ if __name__ == "__main__":
                                       0.0001)
     print "alpha", alpha
     print "beta", beta
+    print("predict1: num_friends_good: 21 , daily_minutes_good = ")+str(predict(alpha,beta,21))
+    print("predict2: num_friends_good: 13 , daily_minutes_good = ") + str(predict(alpha, beta, 13))
+    print("predict3: num_friends_good: 14 , daily_minutes_good = ") + str(predict(alpha, beta, 14))

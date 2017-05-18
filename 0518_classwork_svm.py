@@ -51,7 +51,7 @@ for i in range(0,len(list),8):
 print my_images
 plot.imshow(my_images,cmap=plot.cm.gray_r,interpolation="nearest")
 plot.show()
-
+ 
 
 
 

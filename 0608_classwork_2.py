@@ -6,7 +6,7 @@
 # to try tensorflow, un-comment following two lines
 # import os
 # os.environ['KERAS_BACKEND']='tensorflow'
-
+ 
 import numpy as np
 np.random.seed(1337)  # for reproducibility
 from keras.datasets import mnist
@@ -18,7 +18,7 @@ from keras.optimizers import Adam
 # download the mnist to the path '~/.keras/datasets/' if it is the first time to be called
 # X shape (60,000 28x28), y shape (10,000, )
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
- 
+
 # data pre-processing
 X_train = X_train.reshape(-1, 1,28, 28)/255.
 X_test = X_test.reshape(-1, 1,28, 28)/255.
